@@ -78,7 +78,7 @@ function Login() {
           </button>
         </div>
       </div>
-      <div className="container mx-auto grid grid-cols-3">
+      <div className="container mx-auto md:grid md:grid-cols-3">
         <div className="w-full h-screen flex flex-col justify-center px-[10px] py-20 space-y-[30px]">
           <div>
             <h2 className="font-overpass font-bold text-[38px] -mb-[10px]">
@@ -118,7 +118,7 @@ function Login() {
           </div>
         </div>
 
-        <div></div>
+        <div className="md:block hidden"></div>
       </div>
     </div>
   );
