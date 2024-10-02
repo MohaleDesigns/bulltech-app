@@ -1,5 +1,3 @@
-import React from "react";
-
 interface Props {
   label: string;
   number: number;
@@ -8,7 +6,7 @@ interface Props {
 
 function StatsBox({ label, number, icon }: Props) {
   return (
-    <div className="flex items-center justify-between p-3 rounded-md bg-gradient-to-br from-[#93C23D] to-[#B8E5DE]">
+    <div className="flex items-center justify-between shadow-black/10 shadow-lg p-3 rounded-md bg-gradient-to-br from-[#93C23D] to-[#B8E5DE]">
       <div>
         <h4 className="font-overpass text-[16px] font-medium text-white">
           {label}

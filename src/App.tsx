@@ -1,41 +1,17 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import Dashboard from "./pages/dashboard";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-
-    // Basic validation
-    if (!email || !password) {
-      setError("Both fields are required");
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setError("Invalid email format");
-      return;
-    }
-
-    // Dummy authentication
-    if (email === "test@example.com" && password === "password123") {
-      localStorage.setItem("auth", "true");
-    } else {
-      setError("Invalid credentials");
-    }
-  };
-
   return (
-    <>
-      <Dashboard />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </Router>
   );
 }
 

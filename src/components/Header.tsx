@@ -1,8 +1,13 @@
-import { useState } from "react";
-import { CiSearch } from "react-icons/ci";
+import { CiMenuBurger } from "react-icons/ci";
 
-function Header() {
-  const user = "Kabelo Mohale";
+interface Props {
+  setMobileMenu: any;
+  mobileMenu: boolean;
+}
+
+function Header({ setMobileMenu, mobileMenu }: Props) {
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const user = `${storedUser?.name} ${storedUser?.surname}`;
   const date = new Date();
 
   const initials = user
@@ -16,28 +21,23 @@ function Header() {
   return (
     <div className="flex items-center justify-between">
       <div className="hidden sm:block">
-        <h4 className="font-overpass font-semibold text-[20px] -mb-[10px]">
+        <h4 className="font-overpass font-semibold text-[20px] -mb-[10px] capitalize">
           Hello {user}
         </h4>
         <p className="font-lato font-normal text-[15px] text-darkGrey">{`${day}, ${month} ${date.getDate()}`}</p>
       </div>
       <div className="flex items-center gap-[10px] w-full sm:w-auto justify-between sm:justify-end">
-        <div className="flex items-center gap-[10px] bg-white rounded-md shadow-black/20 shadow-lg p-[10px]">
-          <input
-            type="text"
-            id="search"
-            name="search"
-            placeholder="Search"
-            className="outline-none"
-          />
-          <CiSearch size="24px" color="#5F5F5F" />
-        </div>
-
         <div className="h-[40px] w-[40px] rounded-full bg-[#93C23D] py-[5px] border border-[#A5FF00] flex items-center justify-center">
           <p className="text-white font-overpass font-bold text-[15px] uppercase m-auto">
             {initials}
           </p>
         </div>
+        <CiMenuBurger
+          size="24px"
+          color="#5F5F5F"
+          className="sm:hidden"
+          onClick={() => setMobileMenu(!mobileMenu)}
+        />
       </div>
     </div>
   );
